@@ -7,7 +7,7 @@
         apiKey: process.env.OPENAI_API_KEY,
     });
 
-//lesson #1b: algebra tutor (in js)
+//lesson #0: bare bone chatbot (js)
 
 async function askTutor (question){
     try{
@@ -15,11 +15,20 @@ async function askTutor (question){
             model:"gpt-4o",
             messages:[
             {
+                "role":"system",
+                "content":[
+                    {
+                        "type":"text",
+                        "text":"simple ai chat bot that can answer anything it has capabilities for. however, responses capped at one sentence."
+                    }
+                ]
+            },
+            {
                     "role":"user",
                     "content":[
                         {
                             "type":"text",
-                            "text":"what is 2 + 2?"
+                            "text":question + "?"
                         }
                     ]
             }
@@ -33,4 +42,7 @@ async function askTutor (question){
     }
 
 }
-askTutor('fda');
+
+
+//calling #0 work
+askTutor('what is the color of the sky');
